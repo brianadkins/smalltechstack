@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { company, projects } from '../../../data/site';
+
+const project = projects.find((item) => item.slug === 'product-starter');
+---
+
+<BaseLayout title={`${project?.name} Privacy Policy`} description={`Privacy policy template for ${project?.name}.`} image={false}>
+  <article class="policy">
+    <p class="eyebrow">Last updated {project?.updated}</p>
+    <h1>{project?.name} Privacy Policy</h1>
+    <p>
+      This page is a project-ready privacy policy pattern for future Small Tech
+      Stack apps. Replace this text with the specific project name, data
+      practices, vendors, account behavior, and platform requirements before
+      the app is shared with users.
+    </p>
+    <h2>Information handled by the project</h2>
+    <p>
+      A final app policy should describe account data, user-provided content,
+      analytics, crash logs, payment data, notifications, and any device
+      permissions used by the app.
+    </p>
+    <h2>Use and retention</h2>
+    <p>
+      Explain why the data is needed, how long it is kept, how users can delete
+      or export it, and whether the project syncs data across devices or
+      services.
+    </p>
+    <h2>Contact</h2>
+    <p>
+      Privacy questions can be sent to{' '}
+      <a href={`mailto:${company.email}`}>{company.email}</a>.
+    </p>
+  </article>
+</BaseLayout>

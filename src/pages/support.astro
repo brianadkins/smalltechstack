@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout title="Support" description={`Support contact information for ${company.name}.`}>
+  <article class="policy">
+    <p class="eyebrow">Support</p>
+    <h1>Support</h1>
+    <p>
+      For volunteer IT work, software projects, account requests, privacy
+      requests, or app support, email{' '}
+      <a href={`mailto:${company.email}`}>{company.email}</a>.
+    </p>
+    <h2>What to include</h2>
+    <p>
+      Please include the project or app name, the device or browser involved,
+      what you expected to happen, and what happened instead. Screenshots are
+      welcome when they do not include sensitive information.
+    </p>
+    <h2>Response timing</h2>
+    <p>
+      Replies may take a little while. Active project issues are handled
+      according to the relevant agreement, volunteer arrangement, or project
+      terms.
+    </p>
+  </article>
+</BaseLayout>

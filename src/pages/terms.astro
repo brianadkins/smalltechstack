@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout title="Terms" description={`Terms for ${company.name}.`}>
+  <article class="policy">
+    <p class="eyebrow">Last updated August 30, 2026</p>
+    <h1>Terms of Use</h1>
+    <p>
+      These terms apply to this website and general Small Tech Stack materials.
+      Volunteer arrangements, work agreements, and project-specific terms may
+      include additional or different terms.
+    </p>
+    <h2>Website use</h2>
+    <p>
+      You may use this website for lawful purposes only. Do not attempt to
+      interfere with the site, access systems without permission, or misuse
+      content published here.
+    </p>
+    <h2>No professional guarantee</h2>
+    <p>
+      Website content is general information and does not create a services,
+      legal, security, or financial advisory relationship by itself.
+    </p>
+    <h2>Software projects</h2>
+    <p>
+      Apps and software projects may have their own terms, privacy policies,
+      and support pages. Those project-specific pages govern the relevant
+      project when they apply.
+    </p>
+    <h2>Contact</h2>
+    <p>
+      Questions about these terms can be sent to{' '}
+      <a href={`mailto:${company.email}`}>{company.email}</a>.
+    </p>
+  </article>
+</BaseLayout>

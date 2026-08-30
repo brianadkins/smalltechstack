@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, process, services } from '../data/site';
+---
+
+<BaseLayout title={company.name} description={company.description}>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Volunteer nonprofit IT</p>
+      <h1>Technology for the little guy.</h1>
+      <p class="lede">
+        {company.name} keeps a small public home for volunteer IT work with
+        nonprofits: websites, forms, spreadsheets, automations, simple apps, and
+        the plain policy pages that need to sit beside them.
+      </p>
+      <div class="actions">
+        <a class="button" href={`mailto:${company.email}`}>Send a note</a>
+        <a class="button secondary" href="/nonprofits/">Nonprofit work</a>
+      </div>
+    </div>
+    <aside class="fit-panel" aria-label="No-cost nonprofit project fit">
+      <img
+        class="hero-mark"
+        src="/brand/sts-mark-on-light.svg"
+        alt=""
+        width="240"
+        height="180"
+        loading="eager"
+      />
+      <p class="eyebrow">Usually a fit</p>
+      <h2>Small, specific, useful to the organization.</h2>
+    </aside>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">What this covers</p>
+        <h2>Small pieces, kept understandable.</h2>
+      </div>
+      <a class="button secondary" href="/nonprofits/">See nonprofit focus</a>
+    </div>
+    <div class="grid">
+      {services.map((service) => (
+        <article class="card">
+          <h3>{service.title}</h3>
+          <p>{service.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2>A plain way through small fixes.</h2>
+      </div>
+    </div>
+    <ol class="number-list">
+      {process.map((step) => <li>{step}</li>)}
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Software policies</p>
+        <h2>Policy pages for software projects.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Company policies</h3>
+        <p>
+          Site-wide privacy, terms, and support pages are available for this
+          site.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Project-specific pages</h3>
+        <p>
+          Each app or small tool can have its own profile, privacy policy,
+          terms, support route, and last-updated date.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Plain language</h3>
+        <p>
+          The language stays plain, with clear contact paths and room for the
+          details each app actually needs.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Easy maintenance</h3>
+        <p>
+          Shared data keeps future project pages consistent without making each
+          project sound bigger than it is.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

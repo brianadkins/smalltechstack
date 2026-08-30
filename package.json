@@ -1,0 +1,25 @@
+{
+  "name": "small-tech-stack",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "astro": "ASTRO_TELEMETRY_DISABLED=1 astro",
+    "brand:build": "node scripts/build-logo-assets.mjs",
+    "cf:dry-run": "npm run build && XDG_CONFIG_HOME=.wrangler-home wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "astro": "^7.2.9"
+  },
+  "devDependencies": {
+    "wrangler": "^4.33.1"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

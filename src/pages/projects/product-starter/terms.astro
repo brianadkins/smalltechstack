@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { company, projects } from '../../../data/site';
+
+const project = projects.find((item) => item.slug === 'product-starter');
+---
+
+<BaseLayout title={`${project?.name} Terms`} description={`Terms template for ${project?.name}.`} image={false}>
+  <article class="policy">
+    <p class="eyebrow">Last updated {project?.updated}</p>
+    <h1>{project?.name} Terms</h1>
+    <p>
+      This page is a project-ready terms pattern for future Small Tech Stack
+      apps. Replace this text with the app's production terms before the app is
+      shared with users.
+    </p>
+    <h2>Access</h2>
+    <p>
+      A final policy should describe who may use the app, any account
+      requirements, subscription rules, trial behavior, and acceptable use
+      limits.
+    </p>
+    <h2>Reliability</h2>
+    <p>
+      Explain support scope, known limitations, data backup expectations,
+      service availability, and what happens when an app changes or shuts down.
+    </p>
+    <h2>Contact</h2>
+    <p>
+      Terms questions can be sent to{' '}
+      <a href={`mailto:${company.email}`}>{company.email}</a>.
+    </p>
+  </article>
+</BaseLayout>

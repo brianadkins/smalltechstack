@@ -1,0 +1,76 @@
+---
+import { company } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string | false;
+}
+
+const {
+  title = company.name,
+  description = company.description,
+  image = '/og.png',
+} = Astro.props;
+
+const pageTitle = title === company.name ? title : `${title} | ${company.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, `https://${company.domain}`);
+const imageUrl = image ? new URL(image, canonicalUrl) : null;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="/" aria-label={`${company.name} home`}>
+        <img
+          class="brand-logo"
+          src="/brand/sts-logo-on-light.svg"
+          alt={company.name}
+          width="650"
+          height="100"
+        />
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/#services">Services</a>
+        <a href="/nonprofits/">Nonprofits</a>
+        <a href="/projects/">Projects</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <strong>{company.name}</strong>
+        <p>{company.tagline}</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/terms/">Terms</a>
+        <a href="/privacy/">Privacy</a>
+        <a href={`mailto:${company.email}`}>{company.email}</a>
+      </nav>
+    </footer>
+  </body>
+</html>

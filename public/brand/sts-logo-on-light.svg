@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 100" role="img" aria-labelledby="title desc">
+  <title id="title">Small Tech Stack logo lockup for light backgrounds</title>
+  <desc id="desc">Small Tech Stack name with canonical four-block mark and tagline.</desc>
+  <svg x="0" y="18" width="78" height="58" viewBox="0 0 240 180" aria-hidden="true">
+  <g fill="none" fill-rule="evenodd" stroke="#27312a" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+    <path fill="#f8b832" d="M132 20 C146 19 161 17 184 19 C187 19 189 21 189 24 L188 45 C188 48 186 50 183 50 C164 49 147 52 131 50 C128 50 126 48 127 45 L129 24 C129 22 130 20 132 20 Z" />
+    <path fill="#e7383a" d="M89 58 C123 57 161 55 206 58 C209 58 211 61 210 64 L209 86 C209 89 206 91 203 91 C161 90 122 93 88 90 C85 90 83 88 83 85 L85 62 C85 60 87 58 89 58 Z" />
+    <path fill="#235a91" d="M53 96 C104 94 162 93 222 96 C225 96 227 99 227 102 L226 128 C225 131 223 133 220 132 C163 134 107 136 52 130 C49 130 47 127 48 124 L49 101 C49 98 51 96 53 96 Z" />
+    <path fill="#79b543" d="M7 135 C80 132 155 133 234 137 C237 137 239 140 239 143 L237 167 C237 170 234 172 231 172 C156 171 82 174 7 168 C4 168 2 165 3 162 L4 140 C4 137 5 135 7 135 Z" />
+  </g>
+</svg>
+
+  <text x="98" y="47" fill="#27312a" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Small Tech Stack</text>
+  <text x="100" y="77" fill="#5b625c" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="5">TECHNOLOGY FOR THE LITTLE GUY.</text>
+</svg>

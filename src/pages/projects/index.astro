@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { company, projects } from '../../data/site';
+---
+
+<BaseLayout title="Projects" description={`Software and app project pages from ${company.name}.`}>
+  <section class="page-hero">
+    <p class="eyebrow">Projects</p>
+    <h1>Small tools and their notes.</h1>
+    <p>
+      This area is designed for current and future Small Tech Stack software
+      projects. Each project can keep support details, privacy notes, and terms
+      in one predictable place.
+    </p>
+  </section>
+
+  <section class="project-list" aria-label="Project list">
+    {projects.map((project) => (
+      <article class="project-row">
+        <div>
+          <h2>{project.name}</h2>
+          <p>{project.summary}</p>
+          <div class="meta">
+            <span class="pill">{project.status}</span>
+            <span class="pill">{project.audience}</span>
+            <span class="pill">Updated {project.updated}</span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="button secondary" href={`/projects/${project.slug}/privacy/`}>Privacy</a>
+          <a class="button" href={`/projects/${project.slug}/terms/`}>Terms</a>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

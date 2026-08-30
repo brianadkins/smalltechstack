@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, focusAreas, pastNonprofits } from '../data/site';
+---
+
+<BaseLayout title="Nonprofit Work" description={`Volunteer nonprofit IT focus areas and past projects from ${company.name}.`}>
+  <section class="page-hero">
+    <p class="eyebrow">Nonprofit work</p>
+    <h1>No-cost help, when there is a fit.</h1>
+    <p>
+      Some small technology projects are a good match for volunteer work,
+      especially when the organization has a concrete chore and a clear person
+      who can answer questions.
+    </p>
+  </section>
+
+  <section class="section split-section">
+    <div>
+      <p class="eyebrow">Focus areas</p>
+      <h2>Issues that usually fit.</h2>
+      <p class="section-copy">
+        If a nonprofit is working on any of these issues, there may be room to
+        help with a small technology project at no cost.
+      </p>
+      <ul class="plain-list">
+        {focusAreas.map((area) => <li>{area}</li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Past projects</p>
+      <h2>Organizations from earlier volunteer work.</h2>
+      <ul class="org-list">
+        {pastNonprofits.map((org) => (
+          <li>
+            <span>{org.name}</span>
+            <small>{org.category}</small>
+          </li>
+        ))}
+      </ul>
+      <p class="section-copy compact">
+        Some additional project history is listed through Catchafire:
+        <a href="https://www.catchafire.org/profiles/1573281/impact">impact profile</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

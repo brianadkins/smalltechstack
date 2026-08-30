@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout title="Privacy Policy" description={`Privacy policy for ${company.name}.`}>
+  <article class="policy">
+    <p class="eyebrow">Last updated August 30, 2026</p>
+    <h1>Privacy Policy</h1>
+    <p>
+      {company.name} collects only the information needed to respond to
+      messages, run the website, maintain small software projects, and keep
+      basic records.
+    </p>
+    <h2>Information collected</h2>
+    <ul>
+      <li>Contact details you provide, such as name, email address, company, and message contents.</li>
+      <li>Project information shared during support or software work.</li>
+      <li>Basic technical information such as device, browser, pages visited, and diagnostic logs when needed for security or reliability.</li>
+    </ul>
+    <h2>How information is used</h2>
+    <p>
+      Information is used to respond to messages, provide services, improve
+      software, troubleshoot issues, protect systems, and meet legal or
+      contractual obligations.
+    </p>
+    <h2>Sharing</h2>
+    <p>
+      Small Tech Stack does not sell personal information. Information may be
+      shared with service providers that help operate the business or when
+      required by law.
+    </p>
+    <h2>Your choices</h2>
+    <p>
+      To request access, correction, deletion, or other privacy help, email{' '}
+      <a href={`mailto:${company.email}`}>{company.email}</a>.
+    </p>
+  </article>
+</BaseLayout>
