@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import UtilityAssistantNav from '../../../components/UtilityAssistantNav.astro';
 import { apps } from '../../../data/site';
 
 const app = apps.find((item) => item.slug === 'utility-assistant');
@@ -13,6 +14,7 @@ const feedbackEmail = 'feedback@smalltechstack.com';
   description={`Privacy policy for ${appName}.`}
   image={false}
 >
+  <UtilityAssistantNav current="privacy" />
   <article class="policy">
     <p class="eyebrow">Effective {effectiveDate}</p>
     <h1>{appName} Privacy Policy</h1>

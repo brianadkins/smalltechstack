@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import UtilityAssistantNav from '../../../../components/UtilityAssistantNav.astro';
+import { apps, company } from '../../../../data/site';
+
+const app = apps.find((item) => item.slug === 'utility-assistant');
+const appName = app?.name ?? 'Utility Assistant';
+const feedbackEmail = 'feedback@smalltechstack.com';
+
+const sections = [
+  { id: 'getting-started', label: 'Getting Started' },
+  { id: 'locations', label: 'Locations' },
+  { id: 'providers', label: 'Providers' },
+  { id: 'bills', label: 'Bills' },
+  { id: 'meter-readings', label: 'Meter Readings' },
+  { id: 'today-insights', label: 'Today & Insights' },
+  { id: 'timeline', label: 'Timeline' },
+  { id: 'events', label: 'Events' },
+  { id: 'backup-sync', label: 'Backups & iCloud' },
+  { id: 'help-feedback', label: 'Help & Feedback' },
+  { id: 'privacy', label: 'Privacy' },
+];
+---
+
+<BaseLayout
+  title={`${appName} Documentation`}
+  description={`Documentation and getting started guide for ${appName}.`}
+  image={app?.images[0]?.src}
+>
+  <UtilityAssistantNav current="docs" />
+  <section class="docs-shell">
+    <aside class="docs-toc" aria-label="Documentation sections">
+      <a class="docs-toc-title" href={`/apps/${app?.slug ?? 'utility-assistant'}/`}>{appName}</a>
+      <nav>
+        {sections.map((section) => (
+          <a href={`#${section.id}`}>{section.label}</a>
+        ))}
+      </nav>
+    </aside>
+
+    <article class="docs-content">
+      <header class="docs-hero">
+        <p class="eyebrow">Documentation</p>
+        <h1>{appName}</h1>
+        <p>
+          {appName} helps you understand utility bills by keeping bills, line
+          items, meter readings, weather, and household events in one place.
+        </p>
+      </header>
+
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        <p>
+          Start with one location and one bill. You can add more providers,
+          readings, and notes as you go.
+        </p>
+        <ol>
+          <li>Add the home or property you want to track.</li>
+          <li>Add or choose the utility provider from the bill.</li>
+          <li>Enter the bill dates, total, line items, and meter readings.</li>
+          <li>Review Today for the most useful current insights.</li>
+        </ol>
+      </section>
+
+      <section id="locations">
+        <h2>Locations</h2>
+        <p>
+          A location is the home or property whose utility bills you want to
+          understand. Give it a practical name, such as Home or Rental House.
+        </p>
+        <p>
+          Adding a ZIP code lets the app retrieve weather history for that
+          location, which helps explain heating and cooling changes.
+        </p>
+      </section>
+
+      <section id="providers">
+        <h2>Providers</h2>
+        <p>
+          Providers are the utility companies or services shown on your bills.
+          You do not need to enter every provider up front. Add providers as you
+          add bills.
+        </p>
+        <p>
+          Examples include electric, water, gas, trash, sewer, and yard waste
+          providers.
+        </p>
+      </section>
+
+      <section id="bills">
+        <h2>Bills</h2>
+        <p>
+          Use New Bill to enter a utility bill. If you already have providers,
+          the app lets you choose one. If you do not, it skips that choice and
+          takes you straight into bill entry.
+        </p>
+        <p>Useful bill details include:</p>
+        <ul>
+          <li>billing period</li>
+          <li>statement date and due date</li>
+          <li>total amount</li>
+          <li>line items from the bill</li>
+          <li>meter readings shown on the bill</li>
+          <li>notes that may explain the bill later</li>
+        </ul>
+        <p>
+          The closer the app matches the real bill, the more useful the
+          insights become.
+        </p>
+      </section>
+
+      <section id="meter-readings">
+        <h2>Meter Readings</h2>
+        <p>
+          Meter readings can come from bills or from manual readings you enter
+          yourself. Bill readings are useful because each metered line item can
+          include a starting and ending reading.
+        </p>
+        <p>
+          Meter resets and replacements are treated carefully. When a reset or
+          replacement occurs, the chart should show each side of that change
+          without drawing a misleading connection across the reset.
+        </p>
+      </section>
+
+      <section id="today-insights">
+        <h2>Today & Insights</h2>
+        <p>
+          Today shows the most useful current information first. Insights are
+          designed to explain what changed and why it may matter.
+        </p>
+        <p>Insights may call out:</p>
+        <ul>
+          <li>a bill that changed from the previous bill</li>
+          <li>usage that rose or fell</li>
+          <li>a recurring charge that changed after months at one price</li>
+          <li>weather that may help explain heating or cooling usage</li>
+          <li>the latest meter readings</li>
+        </ul>
+      </section>
+
+      <section id="timeline">
+        <h2>Timeline</h2>
+        <p>
+          Timeline puts bills, weather, and meter readings together so patterns
+          are easier to see.
+        </p>
+        <p>Use it to answer questions like:</p>
+        <ul>
+          <li>Did usage rise when the weather changed?</li>
+          <li>Did the bill increase because of usage, a fee, or a rate change?</li>
+          <li>Did a meter reset or replacement affect readings?</li>
+          <li>Are manual readings consistent with bill readings?</li>
+        </ul>
+        <p>You can tap meter reading points to see the underlying data.</p>
+      </section>
+
+      <section id="events">
+        <h2>Events</h2>
+        <p>
+          Events are notes that explain changes outside the bill itself. They
+          help future-you remember why something looked different.
+        </p>
+        <p>Common examples include:</p>
+        <ul>
+          <li>new appliance</li>
+          <li>guests staying at the house</li>
+          <li>irrigation turned on</li>
+          <li>thermostat change</li>
+          <li>rate plan change</li>
+          <li>leak repair</li>
+          <li>occupancy change</li>
+        </ul>
+      </section>
+
+      <section id="backup-sync">
+        <h2>Backups & iCloud</h2>
+        <p>
+          {appName} stores data on your device and can sync through your private
+          iCloud database when iCloud is available.
+        </p>
+        <p>
+          The app also supports export and import. Export a backup before major
+          app updates, device changes, or replacing app data through import.
+        </p>
+      </section>
+
+      <section id="help-feedback">
+        <h2>Help & Feedback</h2>
+        <p>
+          The Help screen includes links to request features or report bugs by
+          email. Feedback goes to
+          <a href={`mailto:${feedbackEmail}`}>{feedbackEmail}</a>.
+        </p>
+        <p>
+          Feedback emails may include basic app and device context so issues are
+          easier to understand.
+        </p>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy</h2>
+        <p>
+          {appName} does not include advertising, third-party tracking, or a
+          separate Small Tech Stack account system.
+        </p>
+        <p>
+          Read the full
+          <a href={`/apps/${app?.slug ?? 'utility-assistant'}/privacy/`}>privacy policy</a>
+          or contact <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+      </section>
+    </article>
+  </section>
+</BaseLayout>

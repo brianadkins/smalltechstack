@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import UtilityAssistantNav from '../../../components/UtilityAssistantNav.astro';
 import { apps, company } from '../../../data/site';
 
 const app = apps.find((item) => item.slug === 'utility-assistant');
@@ -10,13 +11,18 @@ if (!app) {
 ---
 
 <BaseLayout title={app.name} description={app.description} image={app.images[0]?.src}>
+  <UtilityAssistantNav current="overview" />
   <section class="app-hero">
     <div>
       <p class="eyebrow">{app.status}</p>
       <h1>{app.name}</h1>
       <p class="lede">{app.description}</p>
       <div class="actions">
-        <a class="button" href={app.appStoreUrl}>App Store</a>
+        <a class="app-store-badge hero-badge" href={app.appStoreUrl}>
+          <span>Download on the</span>
+          <strong>App Store</strong>
+        </a>
+        <a class="button secondary" href={`/apps/${app.slug}/docs/`}>Documentation</a>
         <a class="button secondary" href={`/apps/${app.slug}/privacy/`}>Privacy Policy</a>
       </div>
     </div>
@@ -69,7 +75,11 @@ if (!app) {
   </section>
 
   <section class="section app-links" aria-label={`${app.name} links`}>
-    <a class="button" href={app.appStoreUrl}>App Store</a>
+    <a class="app-store-badge" href={app.appStoreUrl}>
+      <span>Download on the</span>
+      <strong>App Store</strong>
+    </a>
+    <a class="button secondary" href={`/apps/${app.slug}/docs/`}>Documentation</a>
     <a class="button secondary" href={`/apps/${app.slug}/privacy/`}>Privacy Policy</a>
     <a class="button secondary" href={`mailto:${company.email}`}>Support</a>
   </section>

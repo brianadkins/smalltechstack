@@ -1,0 +1,36 @@
+---
+import { apps } from '../data/site';
+
+interface Props {
+  current: 'overview' | 'docs' | 'privacy';
+}
+
+const { current } = Astro.props;
+const app = apps.find((item) => item.slug === 'utility-assistant');
+const appName = app?.name ?? 'Utility Assistant';
+const appStoreUrl = app?.appStoreUrl ?? 'https://apps.apple.com/';
+
+const links = [
+  { key: 'overview', label: 'Overview', href: '/apps/utility-assistant/' },
+  { key: 'docs', label: 'Documentation', href: '/apps/utility-assistant/docs/' },
+  { key: 'privacy', label: 'Privacy', href: '/apps/utility-assistant/privacy/' },
+];
+---
+
+<nav class="app-subnav" aria-label={`${appName} navigation`}>
+  <a class="app-subnav-title" href="/apps/utility-assistant/">{appName}</a>
+  <div class="app-subnav-links">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        aria-current={current === link.key ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+  <a class="app-store-badge" href={appStoreUrl}>
+    <span>Download on the</span>
+    <strong>App Store</strong>
+  </a>
+</nav>
