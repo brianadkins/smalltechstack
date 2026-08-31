@@ -33,7 +33,10 @@ import { company, focusAreas, pastNonprofits } from '../data/site';
         {pastNonprofits.map((org) => (
           <li>
             <span>{org.name}</span>
-            <small>{org.category}</small>
+            <small>
+              {org.category}
+              <b>{org.location}</b>
+            </small>
           </li>
         ))}
       </ul>

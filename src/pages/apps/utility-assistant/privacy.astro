@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { apps } from '../../../data/site';
+
+const app = apps.find((item) => item.slug === 'utility-assistant');
+const appName = app?.name ?? 'Utility Assistant';
+const effectiveDate = 'August 30, 2026';
+const feedbackEmail = 'feedback@smalltechstack.com';
+---
+
+<BaseLayout
+  title={`${appName} Privacy Policy`}
+  description={`Privacy policy for ${appName}.`}
+  image={false}
+>
+  <article class="policy">
+    <p class="eyebrow">Effective {effectiveDate}</p>
+    <h1>{appName} Privacy Policy</h1>
+    <p>
+      {appName} is provided by Small Tech Stack LLC. This policy explains what
+      information the app handles, how it is used, and what choices you have.
+    </p>
+
+    <h2>Information You Enter</h2>
+    <p>{appName} stores information you choose to add to the app, including:</p>
+    <ul>
+      <li>Service locations, such as a nickname and ZIP code.</li>
+      <li>Utility providers and account nicknames.</li>
+      <li>
+        Utility bills, billing periods, statement dates, due dates, totals,
+        notes, and bill line items.
+      </li>
+      <li>
+        Meter readings, including reading dates, values, units, and whether a
+        reading was entered manually or came from a bill.
+      </li>
+      <li>
+        Timeline events you create, such as home, occupancy, appliance, rate, or
+        other utility-related events.
+      </li>
+    </ul>
+    <p>
+      This information is used to organize your utility history, calculate usage
+      and cost trends, show charts, and generate insights about bills, weather,
+      meter readings, and recurring charges.
+    </p>
+
+    <h2>Weather Data</h2>
+    <p>
+      If you enter a ZIP code, {appName} may use it to look up weather data for
+      that service location. The app sends the ZIP code to Open-Meteo's
+      geocoding service to estimate latitude, longitude, and time zone, and then
+      sends those coordinates and date ranges to Open-Meteo to retrieve
+      historical weather information.
+    </p>
+    <p>
+      Weather data is used to calculate temperature, heating degree days, and
+      cooling degree days so the app can help explain utility usage and cost
+      changes.
+    </p>
+    <p>
+      Open-Meteo is a third-party weather service. Small Tech Stack LLC does not
+      control Open-Meteo's privacy practices.
+    </p>
+
+    <h2>iCloud Sync</h2>
+    <p>
+      {appName} uses Apple's private CloudKit database to sync app data between
+      your devices when iCloud is available for your Apple Account. This sync is
+      provided by Apple through your iCloud account.
+    </p>
+    <p>
+      Small Tech Stack LLC does not operate a separate account system for
+      {appName} and does not provide its own server for storing your utility
+      bills.
+    </p>
+
+    <h2>Feedback Emails</h2>
+    <p>
+      The Help screen includes links to request features or report bugs by
+      email. If you choose to send feedback, the email is addressed to
+      <a href={`mailto:${feedbackEmail}`}>{feedbackEmail}</a> and may include
+      app diagnostic context such as:
+    </p>
+    <ul>
+      <li>App name.</li>
+      <li>App version and build number.</li>
+      <li>iOS version.</li>
+      <li>Device type and hardware identifier.</li>
+      <li>Locale.</li>
+      <li>Time the email was created.</li>
+      <li>Anything you write in the email.</li>
+    </ul>
+    <p>
+      Email is optional. Do not include utility account numbers, passwords,
+      payment information, or other sensitive details unless you intentionally
+      choose to share them.
+    </p>
+
+    <h2>Data We Do Not Use</h2>
+    <p>
+      {appName} does not use your data for third-party advertising. {appName}
+      does not sell your personal information. {appName} does not use your data
+      to track you across apps or websites owned by other companies.
+    </p>
+
+    <h2>Data Sharing</h2>
+    <p>
+      {appName} may share limited information only as needed to provide app
+      functionality:
+    </p>
+    <ul>
+      <li>
+        Apple iCloud/CloudKit may store and sync the app data associated with
+        your Apple Account.
+      </li>
+      <li>
+        Open-Meteo receives ZIP code, coordinate, date range, and weather
+        request information when weather data is retrieved.
+      </li>
+      <li>
+        Your email provider and Small Tech Stack LLC receive the contents of any
+        feedback email you choose to send.
+      </li>
+    </ul>
+
+    <h2>Data Storage and Retention</h2>
+    <p>
+      {appName} stores app data on your device and, when iCloud sync is
+      available, in your private iCloud database. Data remains there until you
+      edit it, delete it, replace it through an import, remove the app and its
+      data, or manage it through Apple's iCloud settings.
+    </p>
+    <p>
+      The app also lets you export and import your data. Export files are
+      controlled by you and may contain your utility history, locations,
+      providers, bills, timeline events, meter readings, and weather data.
+    </p>
+
+    <h2>Your Choices</h2>
+    <p>You can:</p>
+    <ul>
+      <li>Avoid entering a ZIP code if you do not want weather lookup for a location.</li>
+      <li>Edit or delete app data in the app.</li>
+      <li>Export your app data.</li>
+      <li>Replace app data by importing a backup file.</li>
+      <li>Manage iCloud availability through your Apple Account and device settings.</li>
+      <li>Contact Small Tech Stack LLC about privacy questions or data requests.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>
+      {appName} is not directed to children. The app is intended for people
+      managing household or property utility information.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      Small Tech Stack LLC may update this policy as {appName} changes. If the
+      app's data practices materially change, this policy should be updated
+      before or at the time those changes are released.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Small Tech Stack LLC<br />
+      Email: <a href={`mailto:${feedbackEmail}`}>{feedbackEmail}</a>
+    </p>
+  </article>
+</BaseLayout>

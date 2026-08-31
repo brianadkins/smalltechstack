@@ -301,9 +301,17 @@ h1,
 }
 
 .org-list small {
+  display: grid;
+  gap: 0.12rem;
   color: var(--muted);
   font-size: 0.88rem;
   text-align: right;
+}
+
+.org-list small b {
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 760;
 }
 
 .grid {

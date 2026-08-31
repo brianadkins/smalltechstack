@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { company, process, services } from '../data/site';
+import { apps, company, process, services } from '../data/site';
 ---
 
 <BaseLayout title={company.name} description={company.description}>
@@ -60,6 +60,24 @@ import { company, process, services } from '../data/site';
     <ol class="number-list">
       {process.map((step) => <li>{step}</li>)}
     </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Apps</p>
+        <h2>Small apps with plain support paths.</h2>
+      </div>
+      <a class="button secondary" href="/apps/">See apps</a>
+    </div>
+    <div class="grid">
+      {apps.map((app) => (
+        <article class="card">
+          <h3>{app.name}</h3>
+          <p>{app.summary}</p>
+        </article>
+      ))}
+    </div>
   </section>
 
   <section class="section">

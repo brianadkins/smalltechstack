@@ -61,26 +61,59 @@ export const projects = [
   },
 ];
 
+export const apps = [
+  {
+    slug: 'utility-assistant',
+    name: 'Utility Assistant',
+    status: 'In development',
+    summary:
+      'A small app for keeping household utility readings, bills, and usage notes easier to track over time.',
+    audience: 'Household utility tracking',
+    updated: 'August 30, 2026',
+  },
+];
+
 export const pastNonprofits = [
-  { name: 'Adaptive Training Foundation', category: 'Military and veterans affairs' },
-  { name: 'Apex Public School Foundation', category: 'Education' },
-  { name: 'Backbone Campaign', category: 'Civil rights, environment' },
-  { name: 'Bankbones Online', category: 'Human services' },
-  { name: 'CharityWatch', category: 'Education' },
-  { name: 'Education For All Children', category: 'Education' },
-  { name: 'Family Engagement Lab', category: 'Education' },
-  { name: 'Filling In The Blanks', category: 'Human services' },
-  { name: 'JerseySTEM', category: 'Education' },
-  { name: 'MOSTe Motivating Our Students Through Experience', category: 'Education' },
-  { name: 'The Theater Project', category: 'Arts and culture' },
-  { name: 'Laguna Food Pantry', category: 'Human services' },
-  { name: 'LavaMaeX', category: 'Human services' },
-  { name: 'New Jersey Environmental Justice Alliance', category: 'Environment' },
-  { name: 'Sin Barreras Without Barriers Inc.', category: 'Human services' },
+  {
+    name: 'Adaptive Training Foundation',
+    category: 'Military and veterans affairs',
+    location: 'Carrollton, TX',
+  },
+  { name: 'Apex Public School Foundation', category: 'Education', location: 'Apex, NC' },
+  { name: 'Backbone Campaign', category: 'Civil rights, environment', location: 'Vashon, WA' },
+  { name: 'BACKBONES', category: 'Human services', location: 'Prospect Heights, IL' },
+  { name: 'CharityWatch', category: 'Education', location: 'Chicago, IL' },
+  { name: 'Education For All Children', category: 'Education', location: 'Portsmouth, NH' },
+  { name: 'Family Engagement Lab', category: 'Education', location: 'San Francisco, CA' },
+  { name: 'Filling In The Blanks', category: 'Human services', location: 'Norwalk, CT' },
+  { name: 'JerseySTEM', category: 'Education', location: 'Florham Park, NJ' },
+  {
+    name: 'MOSTe Motivating Our Students Through Experience',
+    category: 'Education',
+    location: 'Los Angeles, CA',
+  },
+  { name: 'The Theater Project', category: 'Arts and culture', location: 'Union, NJ' },
+  { name: 'Laguna Food Pantry', category: 'Human services', location: 'Laguna Beach, CA' },
+  { name: 'LavaMaeX', category: 'Human services', location: 'San Francisco, CA' },
+  {
+    name: 'New Jersey Environmental Justice Alliance',
+    category: 'Environment',
+    location: 'Newark, NJ',
+  },
+  {
+    name: 'Sin Barreras Without Barriers Inc.',
+    category: 'Human services',
+    location: 'Charlottesville, VA',
+  },
   {
     name: 'Transgender Gender-Variant & Intersex Justice Project',
     category: 'Human rights',
+    location: 'San Francisco, CA',
   },
-  { name: 'WildTrack', category: 'Environment, animals' },
-  { name: 'Yellowstone to Yukon Conservation Initiative', category: 'Environment, animals' },
+  { name: 'WildTrack', category: 'Environment, animals', location: 'Durham, NC' },
+  {
+    name: 'Yellowstone to Yukon Conservation Initiative',
+    category: 'Environment, animals',
+    location: 'Canmore, AB / Bozeman, MT',
+  },
 ];

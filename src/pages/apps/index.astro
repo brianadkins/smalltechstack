@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { apps, company } from '../../data/site';
+---
+
+<BaseLayout title="Apps" description={`App pages and support details from ${company.name}.`}>
+  <section class="page-hero">
+    <p class="eyebrow">Apps</p>
+    <h1>Small apps, kept accountable.</h1>
+    <p>
+      This section keeps app names, support routes, update notes, and policy
+      pointers in one predictable place.
+    </p>
+  </section>
+
+  <section class="project-list" aria-label="App list">
+    {apps.map((app) => (
+      <article class="project-row">
+        <div>
+          <h2>{app.name}</h2>
+          <p>{app.summary}</p>
+          <div class="meta">
+            <span class="pill">{app.status}</span>
+            <span class="pill">{app.audience}</span>
+            <span class="pill">Updated {app.updated}</span>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="button secondary" href={`/apps/${app.slug}/privacy/`}>Privacy</a>
+          <a class="button" href="/support/">Support</a>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
