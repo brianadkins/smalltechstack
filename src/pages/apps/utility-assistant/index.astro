@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { apps, company } from '../../../data/site';
+
+const app = apps.find((item) => item.slug === 'utility-assistant');
+
+if (!app) {
+  throw new Error('Utility Assistant app data is missing.');
+}
+---
+
+<BaseLayout title={app.name} description={app.description} image={app.images[0]?.src}>
+  <section class="app-hero">
+    <div>
+      <p class="eyebrow">{app.status}</p>
+      <h1>{app.name}</h1>
+      <p class="lede">{app.description}</p>
+      <div class="actions">
+        <a class="button" href={app.appStoreUrl}>App Store</a>
+        <a class="button secondary" href={`/apps/${app.slug}/privacy/`}>Privacy Policy</a>
+      </div>
+    </div>
+    <figure class="app-hero-image">
+      <img src={app.images[0].src} alt={app.images[0].alt} width="1290" height="2796" />
+    </figure>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">What it tracks</p>
+        <h2>Bills, readings, weather, and notes.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Utility bills</h3>
+        <p>Keep billing periods, due dates, totals, line items, and notes together.</p>
+      </article>
+      <article class="card">
+        <h3>Meter readings</h3>
+        <p>Track manual readings and readings captured from bills over time.</p>
+      </article>
+      <article class="card">
+        <h3>Weather context</h3>
+        <p>Use ZIP-code weather history to compare usage against heating and cooling days.</p>
+      </article>
+      <article class="card">
+        <h3>Home events</h3>
+        <p>Mark changes like occupancy, appliances, rates, or other utility-related events.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Screenshots</p>
+        <h2>A quick look inside.</h2>
+      </div>
+    </div>
+    <div class="screenshot-grid">
+      {app.images.map((image) => (
+        <figure class="screenshot">
+          <img src={image.src} alt={image.alt} width="1290" height="2796" loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="section app-links" aria-label={`${app.name} links`}>
+    <a class="button" href={app.appStoreUrl}>App Store</a>
+    <a class="button secondary" href={`/apps/${app.slug}/privacy/`}>Privacy Policy</a>
+    <a class="button secondary" href={`mailto:${company.email}`}>Support</a>
+  </section>
+</BaseLayout>

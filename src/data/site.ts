@@ -68,8 +68,25 @@ export const apps = [
     status: 'In development',
     summary:
       'A small app for keeping household utility readings, bills, and usage notes easier to track over time.',
+    description:
+      'Utility Assistant helps you keep utility providers, bills, meter readings, weather context, and home timeline events in one place so usage changes are easier to understand.',
     audience: 'Household utility tracking',
     updated: 'August 30, 2026',
+    appStoreUrl: 'https://apps.apple.com/',
+    images: [
+      {
+        src: '/apps/utility-assistant/overview.png',
+        alt: 'Utility Assistant overview screen',
+      },
+      {
+        src: '/apps/utility-assistant/bills.png',
+        alt: 'Utility Assistant bills screen',
+      },
+      {
+        src: '/apps/utility-assistant/insights.png',
+        alt: 'Utility Assistant insights screen',
+      },
+    ],
   },
 ];
 

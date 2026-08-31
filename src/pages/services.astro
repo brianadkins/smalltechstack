@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { company, process, services } from '../data/site';
+---
+
+<BaseLayout title="Services" description={`Small technology services from ${company.name}.`}>
+  <section class="page-hero">
+    <p class="eyebrow">Services</p>
+    <h1>Small pieces, kept understandable.</h1>
+    <p>
+      Volunteer nonprofit IT work, small websites, automations, simple apps,
+      and the plain maintenance notes that keep projects usable.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">What this covers</p>
+        <h2>Practical help for small systems.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      {services.map((service) => (
+        <article class="card">
+          <h3>{service.title}</h3>
+          <p>{service.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2>A plain way through small fixes.</h2>
+      </div>
+    </div>
+    <ol class="number-list">
+      {process.map((step) => <li>{step}</li>)}
+    </ol>
+  </section>
+</BaseLayout>
