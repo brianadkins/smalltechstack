@@ -158,6 +158,15 @@ h3 {
   max-width: 10ch;
 }
 
+.app-icon {
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 1.15rem;
+  border-radius: 20px;
+  box-shadow: 0 14px 36px rgba(31, 37, 32, 0.16);
+}
+
 .app-hero-image,
 .screenshot {
   margin: 0;
