@@ -75,16 +75,24 @@ export const apps = [
     appStoreUrl: 'https://apps.apple.com/',
     images: [
       {
-        src: '/apps/utility-assistant/overview.png',
-        alt: 'Utility Assistant overview screen',
+        src: '/apps/utility-assistant/screenshots/01-today-insights.jpg',
+        alt: 'Utility Assistant Today screen showing bill insights',
       },
       {
-        src: '/apps/utility-assistant/bills.png',
-        alt: 'Utility Assistant bills screen',
+        src: '/apps/utility-assistant/screenshots/02-cost-and-usage-timeline.jpg',
+        alt: 'Utility Assistant timeline showing cost and usage trends',
       },
       {
-        src: '/apps/utility-assistant/insights.png',
-        alt: 'Utility Assistant insights screen',
+        src: '/apps/utility-assistant/screenshots/03-weather-and-meter-timeline.jpg',
+        alt: 'Utility Assistant timeline showing weather and meter readings',
+      },
+      {
+        src: '/apps/utility-assistant/screenshots/04-bills-and-new-bill.jpg',
+        alt: 'Utility Assistant bills screen and new bill entry',
+      },
+      {
+        src: '/apps/utility-assistant/screenshots/05-manage-locations.jpg',
+        alt: 'Utility Assistant manage locations screen',
       },
     ],
   },
