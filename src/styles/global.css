@@ -441,9 +441,8 @@ h1,
 }
 
 .org-list span {
-  color: #164cff;
-  text-decoration: underline;
-  text-underline-offset: 0.16em;
+  color: var(--ink);
+  font-weight: 760;
 }
 
 .org-list small {
