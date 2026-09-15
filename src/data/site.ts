@@ -121,6 +121,11 @@ export const pastNonprofits = [
   { name: 'Laguna Food Pantry', category: 'Human services', location: 'Laguna Beach, CA' },
   { name: 'LavaMaeX', category: 'Human services', location: 'San Francisco, CA' },
   {
+    name: 'Lyme Disease Resource Center, Inc.',
+    category: 'Human services',
+    location: 'Northampton, MA',
+  },
+  {
     name: 'New Jersey Environmental Justice Alliance',
     category: 'Environment',
     location: 'Newark, NJ',
