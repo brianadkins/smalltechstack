@@ -26,8 +26,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(215, 234, 240, 0.8), transparent 28rem),
-    linear-gradient(180deg, #fbfaf4 0%, #f4f6ef 45%, #fbfaf4 100%);
+    radial-gradient(circle at top left, rgba(215, 234, 240, 0.42), transparent 24rem),
+    linear-gradient(180deg, #fbfaf4 0%, #f7f8f3 50%, #fbfaf4 100%);
   color: var(--ink);
   line-height: 1.5;
 }
@@ -140,22 +140,22 @@ h3 {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(2rem, 5vw, 4.25rem);
   align-items: center;
-  min-height: calc(100svh - 78px);
-  padding: 3rem 0 4rem;
+  min-height: min(640px, calc(100svh - 78px));
+  padding: clamp(3.25rem, 7vw, 5.75rem) 0;
 }
 
 .app-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
-  gap: clamp(2rem, 6vw, 5rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
-  padding: 4rem 0 4.8rem;
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
 }
 
 .app-hero h1 {
-  max-width: 10ch;
+  max-width: 12ch;
 }
 
 .app-icon {
@@ -198,18 +198,18 @@ h3 {
 
 h1,
 .page-hero h1 {
-  max-width: 12ch;
-  margin-top: 1rem;
-  font-size: clamp(3.35rem, 8vw, 7.3rem);
-  line-height: 0.9;
+  max-width: 14ch;
+  margin-top: 0.85rem;
+  font-size: clamp(2.9rem, 5.8vw, 5.45rem);
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
 .lede {
   max-width: 660px;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   color: var(--muted);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-size: clamp(1.04rem, 1.45vw, 1.2rem);
 }
 
 .actions {
@@ -316,14 +316,14 @@ h1,
   display: block;
   width: min(180px, 48vw);
   height: auto;
-  margin-bottom: clamp(2rem, 5vw, 4rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
 }
 
 .fit-panel h2 {
-  max-width: 10ch;
+  max-width: 12ch;
   margin-top: 0.8rem;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 0.98;
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -352,7 +352,7 @@ h1,
 }
 
 .section {
-  padding: 4.8rem 0;
+  padding: clamp(3rem, 5vw, 4rem) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -368,22 +368,22 @@ h1,
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .section h2,
 .page-hero h1,
 .policy h1 {
-  font-size: clamp(2.35rem, 5vw, 4.75rem);
-  line-height: 0.95;
+  font-size: clamp(2.05rem, 3.6vw, 3.45rem);
+  line-height: 1;
   letter-spacing: 0;
 }
 
 .section-copy {
   max-width: 620px;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
   color: var(--muted);
-  font-size: 1.06rem;
+  font-size: 1rem;
 }
 
 .section-copy.compact {
@@ -466,7 +466,7 @@ h1,
 }
 
 .card {
-  min-height: 240px;
+  min-height: 190px;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 1.2rem;
@@ -511,14 +511,14 @@ h1,
 
 .page-hero,
 .policy {
-  padding: 4rem 0 2.5rem;
+  padding: clamp(3rem, 6vw, 4.25rem) 0 2rem;
 }
 
 .page-hero p {
   max-width: 740px;
-  margin-top: 1rem;
+  margin-top: 0.9rem;
   color: var(--muted);
-  font-size: 1.18rem;
+  font-size: 1.08rem;
 }
 
 .project-list {
@@ -580,7 +580,7 @@ h1,
   gap: clamp(2rem, 6vw, 5rem);
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 4rem 0 5rem;
+  padding: 3rem 0 4.5rem;
 }
 
 .docs-toc {
@@ -624,10 +624,10 @@ h1,
 }
 
 .docs-hero h1 {
-  max-width: 12ch;
+  max-width: 14ch;
   margin-top: 0.6rem;
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  line-height: 0.92;
+  font-size: clamp(2.45rem, 4.6vw, 4.25rem);
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -640,18 +640,18 @@ h1,
 .docs-hero p {
   max-width: 700px;
   margin-top: 1rem;
-  font-size: 1.15rem;
+  font-size: 1.06rem;
 }
 
 .docs-content section {
   scroll-margin-top: 1.25rem;
-  padding: 2.35rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid var(--line);
 }
 
 .docs-content h2 {
-  font-size: clamp(1.65rem, 3vw, 2.4rem);
-  line-height: 1;
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
