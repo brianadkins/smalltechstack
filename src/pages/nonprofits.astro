@@ -14,36 +14,54 @@ import { company, focusAreas, pastNonprofits } from '../data/site';
     </p>
   </section>
 
-  <section class="section split-section">
-    <div>
-      <p class="eyebrow">Focus areas</p>
-      <h2>Issues that usually fit.</h2>
-      <p class="section-copy">
-        If a nonprofit is working on any of these issues, there may be room to
-        help with a small technology project at no cost.
-      </p>
-      <ul class="plain-list">
-        {focusAreas.map((area) => <li>{area}</li>)}
-      </ul>
-    </div>
-    <div>
-      <p class="eyebrow">Past projects</p>
-      <h2>Organizations from earlier volunteer work.</h2>
-      <ul class="org-list">
-        {pastNonprofits.map((org) => (
-          <li>
-            <span>{org.name}</span>
-            <small>
-              {org.category}
-              <b>{org.location}</b>
-            </small>
-          </li>
-        ))}
-      </ul>
-      <p class="section-copy compact">
-        Some additional project history is listed through Catchafire:
-        <a href="https://www.catchafire.org/profiles/1573281/impact">impact profile</a>.
-      </p>
-    </div>
+  <section class="section">
+    <p class="eyebrow">Focus areas</p>
+    <h2>Issues that usually fit.</h2>
+    <p class="section-copy">
+      If a nonprofit is working on any of these issues, there may be room to
+      help with a small technology project at no cost.
+    </p>
+    <ul class="plain-list">
+      {focusAreas.map((area) => <li>{area}</li>)}
+    </ul>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Past projects</p>
+    <h2>Organizations from earlier volunteer work.</h2>
+    <ul class="org-list">
+      {pastNonprofits.map((org) => (
+        <li>
+          <span>{org.name}</span>
+          <small>
+            {org.category}
+            <b>{org.location}</b>
+          </small>
+        </li>
+      ))}
+    </ul>
+    <p class="section-copy compact">
+      Some additional project history is listed through Catchafire:
+      <a href="https://www.catchafire.org/profiles/1573281/impact">impact profile</a>.
+    </p>
   </section>
 </BaseLayout>
+
+<style>
+  section {
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+
+  .page-hero {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .section {
+    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  h2 {
+    max-width: 24ch;
+  }
+</style>
