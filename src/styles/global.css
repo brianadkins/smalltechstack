@@ -76,6 +76,10 @@ h3 {
   height: auto;
 }
 
+.nav {
+  gap: 2rem;
+}
+
 .nav,
 .site-footer nav {
   color: var(--muted);
