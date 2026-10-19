@@ -1,5 +1,5 @@
 ---
-import { company } from '../data/site';
+import { apps, company } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
@@ -56,7 +56,7 @@ const imageUrl = image ? new URL(image, canonicalUrl) : null;
         <details class="nav-dropdown">
           <summary>Apps</summary>
           <div class="nav-dropdown-menu">
-            <a href="/apps/utility-assistant/">Utility Assistant</a>
+            {apps.map((app) => <a href={`/apps/${app.slug}/`}>{app.name}</a>)}
           </div>
         </details>
       </nav>

@@ -1,0 +1,16 @@
+---
+import PortfolioAppPage from '../../components/PortfolioApp.astro';
+import { apps, type PortfolioApp } from '../../data/site';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { slug: app.slug }, props: { app } }));
+}
+
+interface Props {
+  app: PortfolioApp;
+}
+
+const { app } = Astro.props;
+---
+
+<PortfolioAppPage app={app} />

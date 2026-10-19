@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { PortfolioApp } from '../data/site';
+
+interface Props {
+  app: PortfolioApp;
+}
+
+const { app } = Astro.props;
+---
+
+<BaseLayout title={app.name} description={app.description} image={app.icon}>
+  <article class="portfolio">
+    <header class="portfolio-intro">
+      <img class="app-icon" src={app.icon} alt="" width="88" height="88" />
+      <p class="eyebrow">{app.status}</p>
+      <h1>{app.name}</h1>
+      <p class="lede">{app.description}</p>
+      {app.note && <p class="portfolio-note">{app.note}</p>}
+      <div class="actions">
+        {app.appStoreUrl ? (
+          <a class="app-store-badge" href={app.appStoreUrl}>
+            <span>Download on the</span>
+            <strong>App Store</strong>
+          </a>
+        ) : (
+          <a class="button" href={app.primaryLink.href}>{app.primaryLink.label}</a>
+        )}
+        {app.images.length > 0 && <a class="button secondary" href="#screenshots">See screenshots</a>}
+      </div>
+    </header>
+
+    <section class="portfolio-section" aria-labelledby="capabilities-heading">
+      <p class="eyebrow">What it helps with</p>
+      <h2 id="capabilities-heading">{app.summary}</h2>
+      <div class="portfolio-features">
+        {app.features.map((feature) => (
+          <div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {app.images.length > 0 && (
+      <section class="portfolio-section" id="screenshots" aria-labelledby="screenshots-heading">
+        <p class="eyebrow">Screenshots</p>
+        <h2 id="screenshots-heading">A look inside.</h2>
+        {app.screenshotNote && <p class="portfolio-note">{app.screenshotNote}</p>}
+        <div class="portfolio-gallery">
+          {app.images.map((image) => (
+            <figure>
+              <a href={image.src} aria-label={`View full screenshot: ${image.caption}`}>
+                <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+              </a>
+              <figcaption>{image.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="portfolio-section" aria-labelledby="details-heading">
+      <p class="eyebrow">Details and links</p>
+      <h2 id="details-heading">Using {app.name}</h2>
+      <dl class="portfolio-details">
+        <div><dt>Made for</dt><dd>{app.audience}</dd></div>
+        <div><dt>Platforms</dt><dd>{app.platforms}</dd></div>
+        <div><dt>Availability</dt><dd>{app.availability}</dd></div>
+      </dl>
+      <nav class="portfolio-links" aria-label={`${app.name} resources`}>
+        <a href={app.primaryLink.href}>{app.primaryLink.label} <span aria-hidden="true">↗</span></a>
+        {app.links.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .portfolio {
+    width: min(60rem, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .portfolio-intro {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  h1 {
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 42rem;
+  }
+
+  .portfolio-note {
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .portfolio-section {
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 1.5rem;
+  }
+
+  h2 {
+    max-width: 30ch;
+    margin-top: 0.65rem;
+    font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .portfolio-features {
+    display: grid;
+    gap: 1.75rem;
+    max-width: 44rem;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  .portfolio-features p {
+    margin-top: 0.35rem;
+    color: var(--muted);
+  }
+
+  .portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 2rem 1.5rem;
+    margin-top: 2rem;
+  }
+
+  figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .portfolio-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .portfolio-details {
+    max-width: 44rem;
+    margin-block: 1.5rem 0;
+  }
+
+  .portfolio-details div {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  dt {
+    font-weight: 750;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .portfolio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.75rem;
+    margin-top: 2rem;
+  }
+
+  .portfolio-links a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 600px) {
+    .portfolio-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 1rem;
+    }
+
+    .portfolio-details div {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .portfolio-gallery {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
