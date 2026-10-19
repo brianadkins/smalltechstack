@@ -76,6 +76,10 @@ h3 {
   height: auto;
 }
 
+.nav {
+  gap: 2rem;
+}
+
 .nav,
 .site-footer nav {
   color: var(--muted);
@@ -114,6 +118,8 @@ h3 {
   z-index: 10;
   display: grid;
   min-width: 190px;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
   padding: 0.55rem 0.7rem;
   border: 1px solid var(--line);
   background: var(--panel);
@@ -125,7 +131,7 @@ h3 {
 }
 
 .nav-dropdown-menu a {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .hero,
@@ -702,7 +708,12 @@ h1,
   }
 
   .nav {
+    position: relative;
     flex-wrap: wrap;
+  }
+
+  .nav-dropdown {
+    position: static;
   }
 
   .nav-dropdown-menu {
