@@ -101,7 +101,8 @@ For a scannable fix or recommendation, use this HTML callout in Markdown:
 </aside>
 ```
 
-The shared post layout supplies the background, accent border, and label styling.
+The shared post layout imports `src/styles/blog-post.css` for article layout,
+TOC placement, and callout styling. Its selectors are limited to `.blog-post`.
 
 Run `npm run test:blog` to check Markdown rendering, newest-first ordering,
 RSS escaping, schema validation, draft exclusion, and deletion of cached posts.

@@ -1,0 +1,201 @@
+.blog-post {
+  width: min(44rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  overflow-wrap: anywhere;
+}
+
+.blog-post.has-toc {
+  width: min(70rem, calc(100% - 2rem));
+}
+
+.blog-post.has-toc .reading-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 44rem) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.blog-post .post-toc {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 2rem;
+  min-width: 0;
+}
+
+.blog-post.has-toc .post-content {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.blog-post header,
+.blog-post footer {
+  max-width: 44rem;
+}
+
+.blog-post .back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.blog-post time {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.blog-post h1 {
+  font-size: clamp(2.3rem, 5vw, 3.6rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.blog-post header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
+}
+
+.blog-post .post-content {
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.blog-post .post-content p,
+.blog-post .post-content ul,
+.blog-post .post-content ol,
+.blog-post .post-content blockquote,
+.blog-post .post-content pre,
+.blog-post .post-content table,
+.blog-post .post-content figure {
+  margin-block: 1.25rem;
+}
+
+.blog-post .post-content h2,
+.blog-post .post-content h3,
+.blog-post .post-content h4 {
+  margin-block: 2.25rem 0.85rem;
+  line-height: 1.25;
+  scroll-margin-top: 1.5rem;
+}
+
+.blog-post .post-content h2 {
+  font-size: clamp(1.65rem, 3vw, 2rem);
+}
+
+.blog-post .post-content h3 {
+  font-size: 1.35rem;
+}
+
+.blog-post .post-content li + li {
+  margin-top: 0.5rem;
+}
+
+.blog-post .post-content ul,
+.blog-post .post-content ol {
+  padding-left: 1.5rem;
+}
+
+.blog-post a,
+.blog-post .post-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.blog-post .post-content blockquote {
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--clay);
+  margin-inline: 0;
+  color: var(--muted);
+}
+
+.blog-post .post-content .fix-callout {
+  margin-block: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--moss);
+  background: #eef3e9;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.blog-post .post-content .fix-callout p {
+  margin: 0;
+}
+
+.blog-post .post-content .fix-callout strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--moss);
+}
+
+.blog-post .post-content img,
+.blog-post .post-content video {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-post .post-content pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  overflow-wrap: normal;
+}
+
+.blog-post .post-content :not(pre > code) {
+  padding: 0.15rem 0.3rem;
+  background: var(--line);
+  border-radius: 0.2rem;
+  font-size: 0.9em;
+}
+
+.blog-post .post-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.blog-post .post-content th,
+.blog-post .post-content td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.blog-post .post-content hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: 2rem;
+}
+
+.blog-post footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 1020px) {
+  .blog-post.has-toc {
+    width: min(44rem, calc(100% - 2rem));
+  }
+
+  .blog-post.has-toc .reading-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .blog-post .post-toc,
+  .blog-post .post-content {
+    width: 100%;
+  }
+
+  .blog-post .post-toc {
+    position: static;
+  }
+}
