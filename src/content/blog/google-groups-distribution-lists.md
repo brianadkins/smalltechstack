@@ -85,6 +85,8 @@ Several Exchange features have no clean one-to-one equivalent:
 
 Each one needs a workaround or a different license tier. Audit which of these you actually rely on before migrating.
 
+<section class="checklist" aria-labelledby="a-practical-distribution-list-checklist">
+
 ## A practical distribution-list checklist
 
 - Conversation history: off
@@ -95,3 +97,5 @@ Each one needs a workaround or a different license tier. Audit which of these yo
 - Reply-to: decide on purpose (usually reply to author for announcement lists)
 - Separate distro groups from groups used for Drive or app access
 - At least two owners, and periodic membership audits
+
+</section>

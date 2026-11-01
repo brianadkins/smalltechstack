@@ -104,6 +104,24 @@ For a scannable fix or recommendation, use this HTML callout in Markdown:
 The shared post layout imports `src/styles/blog-post.css` for article layout,
 TOC placement, and callout styling. Its selectors are limited to `.blog-post`.
 
+For a static checklist, wrap a Markdown heading and list in a `.checklist`
+section. Keep blank lines around the Markdown so it renders inside the wrapper:
+
+```markdown
+<section class="checklist" aria-labelledby="before-you-start">
+
+## Before you start
+
+- First task or recommendation
+- Second task or recommendation
+
+</section>
+```
+
+Match `aria-labelledby` to the generated heading ID. The heading remains part of
+the automatic TOC. Checklist rows have decorative empty box outlines, never
+checkmarks; they are not interactive controls and do not track completion.
+
 Run `npm run test:blog` to check Markdown rendering, newest-first ordering,
 RSS escaping, schema validation, draft exclusion, and deletion of cached posts.
 This creates temporary posts in the current checkout, removes them, and rebuilds
