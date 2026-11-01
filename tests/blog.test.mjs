@@ -4,6 +4,7 @@ import { basename, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { runInNewContext } from 'node:vm';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const read = (path) => readFileSync(join(root, path), 'utf8');
@@ -39,6 +40,10 @@ test('blog builds Markdown, sorts posts, excludes drafts, and removes deleted po
       writeFileSync(join(fixtures, `${name}.md`),
         `---\ntitle: "${title}"\ndescription: "Summary with & characters."\npubDate: "${date}"\ndraft: ${draft}\n---\n${body}`);
     }
+    writeFileSync(join(fixtures, 'long.md'),
+      '---\ntitle: Long fixture\ndescription: TOC and callouts\npubDate: "2026-01-01"\n---\n' +
+      body + '\n### Nested detail\n\nDetails.\n\n## Second section\n\nMore.\n\n## A section\n\n' +
+      '<aside class="fix-callout" aria-label="Fix"><p><strong>Fix:</strong> Keep this advice visible.</p></aside>\n');
     build();
     const index = read('dist/blog/index.html');
     const rss = read('dist/rss.xml');
@@ -58,6 +63,57 @@ test('blog builds Markdown, sorts posts, excludes drafts, and removes deleted po
       assert.ok(page.includes(marker), `Missing ${marker}`);
     }
     assert.ok(page.includes(`https://smalltechstack.com${newerLink}`));
+    assert.ok(!page.includes('data-blog-toc'), 'Short posts should omit the TOC');
+    const longPage = read(`dist/blog/${id}/long/index.html`);
+    assert.ok(longPage.includes('data-blog-toc'));
+    assert.ok(longPage.includes('class="mobile-toc"'));
+    for (const match of longPage.matchAll(/<nav[^>]*aria-label="On this page"[^>]*>([\s\S]*?)<\/nav>/g)) {
+      const links = [...match[1].matchAll(/href="#([^"]+)"/g)];
+      assert.equal(links.length, 3, 'TOC includes only level-two headings');
+      assert.equal(new Set(links.map((link) => link[1])).size, 3, 'Repeated headings have distinct anchors');
+      for (const link of links) assert.ok(longPage.includes(`id="${link[1]}"`));
+    }
+    assert.ok(longPage.includes('class="fix-callout"'));
+    assert.ok(longPage.includes('<strong>Fix:</strong> Keep this advice visible.'));
+
+    // Exercise the shipped highlighting script without controlling a browser.
+    const script = [...longPage.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)]
+      .map((match) => match[1]).find((code) => code.includes('data-blog-toc'));
+    assert.ok(script, 'The TOC highlighting script is shipped');
+    const headingIds = ['first', 'second', 'third'];
+    let positions = [200, 500, 900];
+    const headings = headingIds.map((id, i) => ({ id, getBoundingClientRect: () => ({ top: positions[i] }) }));
+    const links = [...headingIds, ...headingIds].map((id) => ({
+      hash: `#${id}`, attributes: {},
+      setAttribute(key, value) { this.attributes[key] = value; },
+      removeAttribute(key) { delete this.attributes[key]; },
+    }));
+    const events = {};
+    let pendingFrame;
+    const toc = { dataset: {}, querySelectorAll: () => links };
+    const document = {
+      querySelector: () => toc,
+      getElementById: (id) => headings.find((heading) => heading.id === id),
+      documentElement: { scrollHeight: 2100 },
+      addEventListener: (event, callback) => { events[event] = callback; },
+    };
+    const window = {
+      scrollY: 0, innerHeight: 800,
+      addEventListener: (event, callback) => { events[event] = callback; },
+    };
+    runInNewContext(script, {
+      document, window, AbortController,
+      requestAnimationFrame: (callback) => { pendingFrame = callback; return 1; },
+      cancelAnimationFrame: () => {},
+    });
+    const activeLinks = () => links.filter((link) => link.attributes['aria-current'] === 'location').map((link) => link.hash);
+    assert.deepEqual(activeLinks(), ['#first', '#first']);
+    positions = [-400, 20, 400];
+    events.scroll(); pendingFrame();
+    assert.deepEqual(activeLinks(), ['#second', '#second']);
+    window.scrollY = 1300;
+    events.scroll(); pendingFrame();
+    assert.deepEqual(activeLinks(), ['#third', '#third']);
     writeFileSync(join(fixtures, 'invalid.md'),
       '---\ntitle: Invalid\ndescription: Schema check\npubDate: not-a-date\n---\n');
     build(false);

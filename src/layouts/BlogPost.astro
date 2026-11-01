@@ -1,25 +1,33 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import BlogToc from '../components/BlogToc.astro';
 import { formatPostDate } from '../lib/blog';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
 }
 
-const { post } = Astro.props;
+const { post, headings } = Astro.props;
+const sections = headings.filter((heading) => heading.depth === 2);
+const showToc = sections.length >= 3;
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="blog-post">
+  <article class:list={['blog-post', { 'has-toc': showToc }]}>
     <a class="back-link" href="/blog/">← All posts</a>
     <header>
       <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
       <h1>{post.data.title}</h1>
       <p class="lede">{post.data.description}</p>
     </header>
-    <div class="post-content">
-      <slot />
+    <div class="reading-layout">
+      {showToc && <aside class="post-toc"><BlogToc headings={sections} /></aside>}
+      <div class="post-content">
+        <slot />
+      </div>
     </div>
     <footer>
       <a href="/blog/">All posts</a>
@@ -34,6 +42,36 @@ const { post } = Astro.props;
     margin-inline: auto;
     padding-block: clamp(2.5rem, 5vw, 4rem);
     overflow-wrap: anywhere;
+  }
+
+  .has-toc {
+    width: min(70rem, calc(100% - 2rem));
+  }
+
+  .has-toc .reading-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 44rem) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  .post-toc {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 2rem;
+    min-width: 0;
+  }
+
+  .has-toc .post-content {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  header,
+  footer {
+    max-width: 44rem;
   }
 
   .back-link {
@@ -111,6 +149,25 @@ const { post } = Astro.props;
     color: var(--muted);
   }
 
+  .post-content :global(.fix-callout) {
+    margin-block: 1.75rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--moss);
+    background: #eef3e9;
+    border-radius: 0 0.4rem 0.4rem 0;
+  }
+
+  .post-content :global(.fix-callout p) {
+    margin: 0;
+  }
+
+  .post-content :global(.fix-callout strong) {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--moss);
+  }
+
   .post-content :global(img),
   .post-content :global(video) {
     max-width: 100%;
@@ -159,5 +216,26 @@ const { post } = Astro.props;
     margin-top: 3rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 1020px) {
+    .has-toc {
+      width: min(44rem, calc(100% - 2rem));
+    }
+
+    .has-toc .reading-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .post-toc,
+    .post-content {
+      width: 100%;
+    }
+
+    .post-toc {
+      position: static;
+    }
   }
 </style>

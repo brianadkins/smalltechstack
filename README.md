@@ -88,6 +88,21 @@ formatting are in `src/lib/blog.ts`, and all posts use
 `src/layouts/BlogPost.astro`. RSS at `/rss.xml` contains post summaries and links.
 The first post is `google-groups-distribution-lists.md`. No example posts are published.
 
+Posts with at least three level-two (`##`) headings get an automatic table of
+contents. It stays on the right on wide screens and becomes a collapsible
+“On this page” above the article on smaller screens. Its links work without
+JavaScript; a small script highlights the section currently being read.
+
+For a scannable fix or recommendation, use this HTML callout in Markdown:
+
+```html
+<aside class="fix-callout" aria-label="Fix">
+  <p><strong>Fix:</strong> Your practical recommendation goes here.</p>
+</aside>
+```
+
+The shared post layout supplies the background, accent border, and label styling.
+
 Run `npm run test:blog` to check Markdown rendering, newest-first ordering,
 RSS escaping, schema validation, draft exclusion, and deletion of cached posts.
 This creates temporary posts in the current checkout, removes them, and rebuilds

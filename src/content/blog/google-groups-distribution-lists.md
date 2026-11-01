@@ -15,7 +15,9 @@ This is the most common complaint.
 - “Who can post.” If external posting isn’t allowed, vendors, customers and partners get rejected or held. People often find out weeks later.
 - Org-level overrides. The admin console has organization-wide settings, such as whether external members or posting are allowed at all. These can quietly override what a group owner set.
 
-Fix: For distros that receive outside mail, allow external posting where appropriate. Set spam handling to deliver or bypass moderation, and make sure someone actually owns the pending queue.
+<aside class="fix-callout" aria-label="Fix">
+  <p><strong>Fix:</strong> For distros that receive outside mail, allow external posting where appropriate. Set spam handling to deliver or bypass moderation, and make sure someone actually owns the pending queue.</p>
+</aside>
 
 ## Conversation history and privacy
 
@@ -24,7 +26,9 @@ Fix: For distros that receive outside mail, allow external posting where appropr
 - Membership lists can also be visible more broadly than intended.
 - Misconfigured public groups have caused real data exposures. A batch of them made the news around 2018.
 
-Fix: For a pure distro, turn off conversation history. Restrict who can view conversations and members, and restrict who can join, usually to invited members only.
+<aside class="fix-callout" aria-label="Fix">
+  <p><strong>Fix:</strong> For a pure distro, turn off conversation history. Restrict who can view conversations and members, and restrict who can join, usually to invited members only.</p>
+</aside>
 
 ## Members can opt out of email
 
