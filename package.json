@@ -8,12 +8,14 @@
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "test:blog": "node --test tests/blog.test.mjs",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "astro": "ASTRO_TELEMETRY_DISABLED=1 astro",
     "brand:build": "node scripts/build-logo-assets.mjs",
     "cf:dry-run": "npm run build && XDG_CONFIG_HOME=.wrangler-home wrangler deploy --dry-run"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "astro": "^7.2.9"
   },
   "devDependencies": {

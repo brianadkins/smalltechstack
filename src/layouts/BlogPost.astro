@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import '../styles/blog-post.css';
+import BlogToc from '../components/BlogToc.astro';
+import { formatPostDate } from '../lib/blog';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
+}
+
+const { post, headings } = Astro.props;
+const sections = headings.filter((heading) => heading.depth === 2);
+const showToc = sections.length >= 3;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class:list={['blog-post', { 'has-toc': showToc }]}>
+    <a class="back-link" href="/blog/">← All posts</a>
+    <header>
+      <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
+      <h1>{post.data.title}</h1>
+      <p class="lede">{post.data.description}</p>
+    </header>
+    <div class="reading-layout">
+      {showToc && <aside class="post-toc"><BlogToc headings={sections} /></aside>}
+      <div class="post-content">
+        <slot />
+      </div>
+    </div>
+    <footer>
+      <a href="/blog/">All posts</a>
+      <a href="/rss.xml">Subscribe via RSS</a>
+    </footer>
+  </article>
+</BaseLayout>
