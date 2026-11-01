@@ -86,7 +86,7 @@ path such as `![Descriptive alt text](/blog/my-first-post/photo.jpg)`.
 The collection schema is in `src/content.config.ts`, shared filtering and date
 formatting are in `src/lib/blog.ts`, and all posts use
 `src/layouts/BlogPost.astro`. RSS at `/rss.xml` contains post summaries and links.
-The blog starts empty; no example posts are published.
+The first post is `google-groups-distribution-lists.md`. No example posts are published.
 
 Run `npm run test:blog` to check Markdown rendering, newest-first ordering,
 RSS escaping, schema validation, draft exclusion, and deletion of cached posts.
