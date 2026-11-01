@@ -93,7 +93,7 @@ Each one needs a workaround or a different license tier. Audit which of these yo
 - Who can view conversations and members: owners/managers (or members, if needed)
 - Who can join: invited only
 - Who can post: set deliberately (internal only, or anyone if it receives outside mail)
-- Spam handling: avoid silent moderation, or assign someone to the queue
+- Spam handling: choose whether suspected spam is delivered, moderated, or rejected. If moderated, assign someone to check the queue daily.
 - Reply-to: decide on purpose (usually reply to author for announcement lists)
 - Separate distro groups from groups used for Drive or app access
 - At least two owners, and periodic membership audits
