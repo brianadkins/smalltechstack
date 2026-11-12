@@ -9,11 +9,11 @@ draft: false
 
 ## 1. Know the three places
 
-| Location | Who owns the files | Use it for |
-| --- | --- | --- |
-| **My Drive** | You, individually | Drafts and personal working files only. If you leave, an admin has to transfer organization files owned by your Workspace account. |
-| **Shared drives** | The organization | Everything the team needs: programs, finance, board, grants. Files stay when people leave. |
-| **Shared with me** | Someone else | A view of files others shared with you. Not a storage location. |
+| Location | Who owns the files | Who can access | Use it for |
+| --- | --- | --- | --- |
+| **My Drive** | You, individually | You and anyone granted access through sharing | Drafts and personal working files only. If you leave, an admin will need to transfer these files owned by your Workspace account. |
+| **Shared drives** | The organization | Drive members and others given access to specific files or folders, subject to sharing restrictions | Everything the team needs: programs, finance, board, grants. Files stay in place when people leave. |
+| **Shared with me** | Someone else | People with permission to those files | A view of files others shared with you. Not a storage location. |
 
 **Rule of thumb:** if anyone else will ever need a file, it belongs in a shared drive.
 
