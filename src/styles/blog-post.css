@@ -197,11 +197,16 @@
   border-collapse: collapse;
 }
 
+.blog-post .post-content th:last-child {
+  min-width: 16rem;
+}
+
 .blog-post .post-content th,
 .blog-post .post-content td {
   padding: 0.6rem 0.85rem;
   border: 1px solid var(--line);
   text-align: left;
+  overflow-wrap: normal;
 }
 
 .blog-post .post-content hr {
